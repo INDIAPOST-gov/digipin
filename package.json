@@ -1,24 +1,51 @@
 {
   "name": "digipin",
   "version": "1.0.0",
-  "description": "",
+  "description": "DIGIPIN API - A geospatial addressing solution by India Post",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:unit": "jest tests/digipin.test.js",
+    "test:api": "jest tests/api.test.js",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "digipin",
+    "geocoding",
+    "india-post",
+    "geospatial",
+    "addressing"
+  ],
+  "author": "Department of Posts, Government of India",
+  "license": "Apache-2.0",
   "dependencies": {
     "cors": "^2.8.5",
     "digipin": "file:",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "express-validator": "^7.3.0",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^5.0.1",
     "yaml": "^2.7.1",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/app.js",
+      "!**/node_modules/**"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "verbose": true
   }
 }
