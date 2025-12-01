@@ -127,6 +127,25 @@ Access the Swagger UI documentation at:
 ```
 http://localhost:5000/api-docs
 ```
+### Using the API from Python
+
+You can call the DIGIPIN REST API from Python using the requests library.
+
+1. Start the DIGIPIN server:
+  ```
+   npm install
+   npm start
+   (The API will be available at http://localhost:5000)
+  ```
+2. Run the example Python client from examples/python/client.py:
+  ```
+   pip install requests
+   python examples/python/client.py
+  ```
+The example script demonstrates how to:
+
+- Encode latitude/longitude into a DIGIPIN using GET /api/digipin/encode
+- Decode a DIGIPIN back to coordinates using GET /api/digipin/decode
 
 ---
  
