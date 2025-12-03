@@ -2,29 +2,64 @@ const express = require('express');
 const router = express.Router();
 const { getDigiPin, getLatLngFromDigiPin } = require('../digipin');
 
-router.post('/encode', (req, res) => { const { latitude, longitude } = req.body; try { const code = getDigiPin(latitude, longitude); res.json({ digipin: code }); } catch (e) { res.status(400).json({ error: e.message }); } });
-
-router.post('/decode', (req, res) => { const { digipin } = req.body; try { const coords = getLatLngFromDigiPin(digipin); res.json(coords); } catch (e) { res.status(400).json({ error: e.message }); } });
-
-  router.get('/encode', (req, res) => {
-    const { latitude, longitude } = req.query;
-    try {
-      const code = getDigiPin(parseFloat(latitude), parseFloat(longitude));
-      res.json({ digipin: code });
-    } catch (e) {
-      res.status(400).json({ error: e.message });
-    }
-  });
+router.post('/encode', (req, res, next) => {
+  const { latitude, longitude } = req.body;
   
-  router.get('/decode', (req, res) => {
-    const { digipin } = req.query;
-    try {
-      const coords = getLatLngFromDigiPin(digipin);
-      res.json(coords);
-    } catch (e) {
-      res.status(400).json({ error: e.message });
-    }
-  });
-
+  if (!latitude || !longitude) {
+    return res.status(400).json({ error: 'Latitude and longitude are required' });
+  }
   
+  try {
+    const code = getDigiPin(parseFloat(latitude), parseFloat(longitude));
+    res.json({ digipin: code });
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post('/decode', (req, res, next) => {
+  const { digipin } = req.body;
+  
+  if (!digipin) {
+    return res.status(400).json({ error: 'DIGIPIN is required' });
+  }
+  
+  try {
+    const coords = getLatLngFromDigiPin(digipin);
+    res.json(coords);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get('/encode', (req, res, next) => {
+  const { latitude, longitude } = req.query;
+  
+  if (!latitude || !longitude) {
+    return res.status(400).json({ error: 'Latitude and longitude are required' });
+  }
+  
+  try {
+    const code = getDigiPin(parseFloat(latitude), parseFloat(longitude));
+    res.json({ digipin: code });
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get('/decode', (req, res, next) => {
+  const { digipin } = req.query;
+  
+  if (!digipin) {
+    return res.status(400).json({ error: 'DIGIPIN is required' });
+  }
+  
+  try {
+    const coords = getLatLngFromDigiPin(digipin);
+    res.json(coords);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;
