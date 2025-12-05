@@ -4,23 +4,46 @@ info:
   description: Encode and decode DIGIPIN based on latitude and longitude
   version: 1.0.0
 servers:
-  - url: http://localhost:5000/api
+  - url: /api
 
 paths:
   /digipin/encode:
     post:
-      summary: Encode lat/lon into DIGIPIN
+      summary: Encode coordinates into DIGIPIN
+      description: |
+        Encode coordinates into DIGIPIN. Supports decimal degrees, DMS (with ' or ′ for minutes and " or ″ or '' for seconds), and Google Maps coordinate string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                latitude:
-                  type: number
-                longitude:
-                  type: number
+              oneOf:
+                - type: object
+                  properties:
+                    coordinates:
+                      type: string
+                      description: Google Maps coordinate string format
+                      example: "12.903016468272682, 77.60606960542954"
+                  required: [coordinates]
+                - type: object
+                  properties:
+                    latitude:
+                      oneOf:
+                        - type: number
+                          description: Decimal degrees
+                          example: 12.903016
+                        - type: string
+                          description: DMS format
+                          example: "12°54''10.3\"N"
+                    longitude:
+                      oneOf:
+                        - type: number
+                          description: Decimal degrees
+                          example: 77.606069
+                        - type: string
+                          description: DMS format
+                          example: "77°36''22.3\"E"
+                  required: [latitude, longitude]
       responses:
         '200':
           description: Successfully encoded DIGIPIN
@@ -31,21 +54,62 @@ paths:
                 properties:
                   digipin:
                     type: string
+                    description: The generated DIGIPIN code
+                    example: "4P3-KCF-77M4"
+                  input:
+                    type: object
+                    description: The parsed input coordinates in decimal degrees
+                    properties:
+                      latitude:
+                        type: number
+                        example: 12.903016468272682
+                      longitude:
+                        type: number
+                        example: 77.60606960542954
         '400':
           description: Invalid input
     get:
-      summary: Encode latitude and longitude into DIGIPIN
+      summary: Encode coordinates into DIGIPIN via query parameters
+      description: |
+        Encode coordinates into DIGIPIN using query parameters. Supports decimal degrees, DMS ('/′ minutes and "/″/'' seconds), and Google Maps coordinate string
       parameters:
         - in: query
-          name: latitude
-          required: true
+          name: coordinates
+          required: false
           schema:
-            type: number
+            type: string
+          description: Google Maps coordinate string format (e.g., "12.903016468272682,77.60606960542954")
+          example: "12.903016468272682,77.60606960542954"
+        - in: query
+          name: latitude
+          required: false
+          schema:
+            oneOf:
+              - type: number
+              - type: string
+          description: Latitude in decimal degrees or DMS format
+          examples:
+            decimal:
+              value: 12.903016
+              summary: Decimal degrees
+            dms:
+              value: "12°54''10.3\"N"
+              summary: DMS format
         - in: query
           name: longitude
-          required: true
+          required: false
           schema:
-            type: number
+            oneOf:
+              - type: number
+              - type: string
+          description: Longitude in decimal degrees or DMS format
+          examples:
+            decimal:
+              value: 77.606069
+              summary: Decimal degrees
+            dms:
+              value: "77°36''22.3\"E"
+              summary: DMS format
       responses:
         '200':
           description: Successfully encoded DIGIPIN
@@ -56,8 +120,20 @@ paths:
                 properties:
                   digipin:
                     type: string
+                    description: The generated DIGIPIN code
+                    example: "4P3-KCF-77M4"
+                  input:
+                    type: object
+                    description: The parsed input coordinates in decimal degrees
+                    properties:
+                      latitude:
+                        type: number
+                        example: 12.903016468272682
+                      longitude:
+                        type: number
+                        example: 77.60606960542954
         '400':
-          description: Invalid input
+          description: Invalid input or missing required parameters
 
   /digipin/decode:
     post:
