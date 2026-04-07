@@ -6,6 +6,54 @@ info:
 servers:
   - url: http://localhost:5000/api
 
+components:
+  schemas:
+    EncodeRequest:
+      type: object
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          oneOf:
+            - type: number
+            - type: string
+          example: 12.9716
+        longitude:
+          oneOf:
+            - type: number
+            - type: string
+          example: 77.5946
+    EncodeResponse:
+      type: object
+      properties:
+        digipin:
+          type: string
+          example: 4P3-JK8-52C9
+    DecodeRequest:
+      type: object
+      required:
+        - digipin
+      properties:
+        digipin:
+          type: string
+          example: 4P3-JK8-52C9
+    DecodeResponse:
+      type: object
+      properties:
+        latitude:
+          type: string
+          example: "12.971601"
+        longitude:
+          type: string
+          example: "77.594584"
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Latitude must be a valid number
+
 paths:
   /digipin/encode:
     post:
@@ -15,24 +63,20 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                latitude:
-                  type: number
-                longitude:
-                  type: number
+              $ref: '#/components/schemas/EncodeRequest'
       responses:
         '200':
           description: Successfully encoded DIGIPIN
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  digipin:
-                    type: string
+                $ref: '#/components/schemas/EncodeResponse'
         '400':
           description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     get:
       summary: Encode latitude and longitude into DIGIPIN
       parameters:
@@ -40,24 +84,29 @@ paths:
           name: latitude
           required: true
           schema:
-            type: number
+            oneOf:
+              - type: number
+              - type: string
         - in: query
           name: longitude
           required: true
           schema:
-            type: number
+            oneOf:
+              - type: number
+              - type: string
       responses:
         '200':
           description: Successfully encoded DIGIPIN
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  digipin:
-                    type: string
+                $ref: '#/components/schemas/EncodeResponse'
         '400':
           description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
   /digipin/decode:
     post:
@@ -67,24 +116,20 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                digipin:
-                  type: string
+              $ref: '#/components/schemas/DecodeRequest'
       responses:
         '200':
           description: Successfully decoded DIGIPIN
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                  longitude:
-                    type: number
+                $ref: '#/components/schemas/DecodeResponse'
         '400':
           description: Invalid DIGIPIN
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     get:
       summary: Decode DIGIPIN to coordinates
       parameters:
@@ -99,11 +144,10 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                  longitude:
-                    type: number
+                $ref: '#/components/schemas/DecodeResponse'
         '400':
           description: Invalid DIGIPIN
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
