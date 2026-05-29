@@ -1,15 +1,65 @@
-# DIGIPIN API by Department of Posts
+<div align="center">
 
-<div align="center" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ministry_of_Communications_India.svg/1920px-Ministry_of_Communications_India.svg.png" alt="Ministry of Communications" width="240"/>
-  <img src="https://dac.indiapost.gov.in/mydigipin/_next/image?url=%2Fmydigipin%2Fimages%2Findiapost_logo_v2.webp&w=1920&q=75" alt="India Post" width="120"/>
+<table width="100%">
+<tr>
+
+<td align="left" width="25%">
+<img src="docs/images/indiapost_logo_v2.webp"
+     alt="India Post"
+     width="100"/>
+
+<p style="font-size: 8px; font-weight: bold; color: #444444; font-family: Arial, Helvetica, sans-serif; margin-top: 4px; margin-left: 2px;">
+भारतीय डाक · डाक सेवा जन सेवा
+</p>
+</td>
+
+<td align="center" width="50%">
+
+<p align="center">
+<img src="docs//images/DIGIPIN_Logo.png"
+     alt="DIGIPIN logo"
+     width="52"
+     style="vertical-align: middle; margin-right: 12px;"/>
+<span style="font-size: 48px; font-weight: 800; letter-spacing: 1px; vertical-align: middle; font-family: Arial, Helvetica, sans-serif;">
+DIGIPIN
+
+
+<td align="left" width="25%">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ministry_of_Communications_India.svg/1920px-Ministry_of_Communications_India.svg.png"
+     alt="Ministry of Communications"
+     width="210"/>
+
+<p style="font-size: 10px; font-weight: bold; color: #444444; font-family: Arial, Helvetica, sans-serif; margin-top: 4px; margin-left: 0px;">
+Government of India
+</p>
+
+</td>
+
+</tr>
+</table>
+
+<div style="height:4px; width:100%; background:linear-gradient(to right, #f58220 50%, #138808 50%);"></div>
+
 </div>
 
-## A Geospatial Addressing Solution by India Post
+## 🌐 A Geospatial Addressing Solution by India Post
 
-DIGIPIN (Digital PIN) is a 10-character alphanumeric geocode developed by the Department of Posts, India. It provides a precise, user-friendly way to encode geographic coordinates that can be easily shared and decoded back to latitude/longitude pairs.
+<p align="justify">
 
-This open-source Node.js project exposes a public API to generate and decode DIGIPINs, supporting geolocation services, postal logistics, and spatial analysis applications.
+<b>
+<img src="docs/images/DIGIPIN_Logo.png"
+     alt="DIGIPIN logo"
+     width="14"
+     style="vertical-align: middle; margin-right: 4px;"/>
+DIGIPIN (Digital PIN)
+</b> is visualized as an geospatial addressing grid system that assigns a unique 10-digit alphanumeric code that represents a 4-meter by 4-meter(approx.) units, derived from the latitude and longitude coordinates of the unit. This alphanumeric code serves as the addressing reference for any specific location within the DIGIPIN system. DIGIPIN is a function of the latitude and longitude of the location represented as a grid value.  
+<br>
+<br>
+
+<p>
+  This open-source Node.js project exposes a public API to generate and decode DIGIPINs, supporting geolocation services, postal logistics, and spatial analysis applications.
+</p>
+
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Node.js](https://img.shields.io/badge/Node.js-v14+-green.svg)](https://nodejs.org/)
@@ -25,7 +75,11 @@ Developed in collaboration with IIT Hyderabad and NRSC (National Remote Sensing 
 
 After extensive public consultation and expert review, the DIGIPIN Grid has been finalized to provide simplified addressing solutions for seamless delivery of public and private services, enabling "Address as a Service" (AaaS) across the country.
 
-### Key Highlights
+It provides a precise, user-friendly, and interoperable method for representing geographic locations, enabling seamless conversion between DIGIPIN codes and latitude/longitude coordinates for easy sharing, navigation, and digital addressing.
+
+
+
+### ✨ Key Highlights
 
 - **Uniform Referencing Framework**: Provides logical, precise location identification both offline and online
 - **GIS Integration**: Bridges the gap between physical and digital addresses
@@ -36,7 +90,7 @@ DIGIPIN simplifies address management and enhances service delivery accuracy, pr
 
 ---
 
-## ✨ Features
+## ⚙️ Features
 
 - **Encode**: Convert latitude and longitude into a compact 10-character DIGIPIN
 - **Decode**: Transform a DIGIPIN back to its center-point coordinates
@@ -45,6 +99,54 @@ DIGIPIN simplifies address management and enhances service delivery accuracy, pr
 - **Interactive Documentation**: Comprehensive Swagger UI for easy exploration
 - **Production-Ready**: Built with Node.js and Express for reliability
 
+---
+## 🔖 DIGIPIN Representation Guidelines
+
+<p align="justify">
+DIGIPIN shall be represented using the <b>official DIGIPIN symbol</b> adopted by the Department of Posts, Government of India, followed by a valid <b>10-character alphanumeric DIGIPIN</b>.
+
+For digital processing, storage, transmission, and interoperability, DIGIPIN shall be maintained as a <b>continuous 10-character identifier</b> containing only approved DIGIPIN characters. Hyphens (-) and other punctuation characters are not permitted. For display purposes, spaces may optionally be used in a <b>3-4-3 grouping pattern</b> to improve readability.
+</p>
+
+<table width="100%">
+<tr>
+<th align="left">Representation</th>
+<th align="left">Status</th>
+</tr>
+
+<tr>
+<td>
+<img src="docs/images/DIGIPIN_Logo.png" alt="DIGIPIN" width="14" style="vertical-align:middle;" />
+&nbsp;<b>C4P8K63M4M</b>
+</td>
+<td>✅ Approved</td>
+</tr>
+
+<tr>
+<td>
+<img src="docs/images/DIGIPIN_Logo.png" alt="DIGIPIN" width="14" style="vertical-align:middle;" />
+&nbsp;<b>C4P 8K63 M4M</b>
+</td>
+<td>✅ Acceptable Display Format</td>
+</tr>
+
+<tr>
+<td>
+<b>C4P8K63M4M</b>
+</td>
+<td>❌ DIGIPIN symbol missing</td>
+</tr>
+
+<tr>
+<td>
+<img src="docs/images/DIGIPIN_Logo.png" alt="DIGIPIN" width="14" style="vertical-align:middle;" />
+&nbsp;<b>C4P-8K6-3M4M</b>
+</td>
+<td>❌ Hyphens are not permitted</td>
+</tr>
+</table>
+
+> **Note:** For APIs, databases, integrations, and system-to-system exchange, DIGIPIN shall always be represented as a continuous **10-character alphanumeric identifier** without spaces, hyphens, or other punctuation characters.
 ---
 
 ## 📦 Installation
@@ -96,28 +198,43 @@ The API will be available at `http://localhost:5000`.
 
 ## 🚀 API Usage
 
-### Encode Coordinates to DIGIPIN
+The project exposes two primary REST APIs: an encoding API to generate a DIGIPIN from latitude and longitude coordinates, and a decoding API to derive geographic coordinates from a valid DIGIPIN.
+
+### 1. Encode Coordinates to DIGIPIN
+The API validates the supplied latitude and longitude coordinates and encodes them into a single unique 10-character alphanumeric DIGIPIN string, without any punctuations.
+
+### Example Request
 
 ```
-GET /api/digipin/encode?latitude=12.9716&longitude=77.5946
+GET /api/digipin/encode?latitude=13.11179621&longitude=80.20264269
 ```
 
-**Response:**
-
-```json
-{"digipin":"4P3-JK8-52C9"}
-```
-
-### Decode DIGIPIN to Coordinates
+**Example Response:**
 
 ```
-GET /api/digipin/decode?digipin=4P3-JK8-52C9
+json
+{
+  "digipin": "4T396F42L7"
+}
 ```
 
-**Response:**
+### 2. Decode DIGIPIN to Coordinates
+The API validates the supplied 10-character alphanumeric DIGIPIN and decodes it into the corresponding geographic coordinates (latitude and longitude) representing the center point of the identified grid cell.
 
-```json
-{"latitude":"12.971601","longitude":"77.594584"}
+### Example Request
+
+```
+GET /api/digipin/decode?digipin=4P3JK852C9
+```
+
+**Example Response:**
+
+```
+json
+{
+    "latitude": "12.971601",
+    "longitude": "77.594584"
+}
 ```
 
 ### Interactive API Documentation
@@ -158,4 +275,16 @@ This project is licensed under the Apache License, Version 2.0 - see the [LICENS
 
 ---
 
+## ⚖️ Legal
+
+- [Privacy Policy](PRIVACY_POLICY.md)
+- [Disclaimer](DISCLAIMER.md)
+
+---
+
 *Transforming addresses for Digital India*
+---
+
+## 📝 Release Information
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.

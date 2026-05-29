@@ -23,4 +23,15 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // DIGIPIN API Routes
 app.use('/api/digipin', digipinRoutes);
 
+// Privacy Policy Page
+app.get('/privacy-policy', (req, res) => {
+  res.sendFile(path.join(__dirname, '../docs/privacy-policy.html'));
+});
+
+// Disclaimer page.html
+app.get('/disclaimer', (req, res) => {
+  res.sendFile(path.join(__dirname, '../docs/disclaimer.html'));
+});
+app.use('/docs', express.static(path.join(__dirname, '../docs')));
+
 module.exports = app;

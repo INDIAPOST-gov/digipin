@@ -1,109 +1,293 @@
 openapi: 3.0.0
+
 info:
-  title: DIGIPIN API
-  description: Encode and decode DIGIPIN based on latitude and longitude
-  version: 1.0.0
+  title: DIGIPIN API by Department of Posts
+  version: 2.0.0
+  description: |
+    DIGIPIN (Digital Postal Index Number) is India's National Geospatial Addressing Grid developed by the Department of Posts, Ministry of Communications, Government of India.
+
+    This API provides services for:
+
+    - Generating DIGIPIN from geographic coordinates.
+    - Decoding DIGIPIN into geographic coordinates.
+
+    DIGIPIN Standard:
+
+    - Continuous 10-character alphanumeric identifier.
+    - Exactly 10 characters in length.
+    - Approved DIGIPIN character set:
+      2, 3, 4, 5, 6, 7, 8, 9, C, J, K, L, M, P, F, T
+    - No spaces.
+    - No hyphens (-).
+    - No special characters.
+
 servers:
   - url: http://localhost:5000/api
 
+tags:
+  - name: DIGIPIN
+    description: DIGIPIN Encoding and Decoding Services
+
 paths:
+
   /digipin/encode:
+
+    get:
+      tags:
+        - DIGIPIN
+
+      summary: Generate DIGIPIN from geographic coordinates
+
+      description: |
+        Generates a continuous 10-character DIGIPIN from valid
+        latitude and longitude coordinates.
+
+      parameters:
+        - name: latitude
+          in: query
+          required: true
+          description: Latitude in decimal degrees.
+          schema:
+            type: number
+            format: double
+            example: 13.067526
+
+        - name: longitude
+          in: query
+          required: true
+          description: Longitude in decimal degrees.
+          schema:
+            type: number
+            format: double
+            example: 80.270956
+
+      responses:
+
+        '200':
+          description: DIGIPIN generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EncodeResponse'
+              example:
+                digipin: "4T396F42L7"
+
+        '400':
+          description: Invalid latitude or longitude
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+
+                latitudeOutOfRange:
+                  value:
+                    error: "Latitude out of range"
+
+                longitudeOutOfRange:
+                  value:
+                    error: "Longitude out of range"
+
     post:
-      summary: Encode lat/lon into DIGIPIN
+      tags:
+        - DIGIPIN
+
+      summary: Generate DIGIPIN from geographic coordinates
+
+      description: |
+        Generates a continuous 10-character DIGIPIN from valid
+        latitude and longitude coordinates.
+
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                latitude:
-                  type: number
-                longitude:
-                  type: number
+              $ref: '#/components/schemas/EncodeRequest'
+            example:
+              latitude: 13.067526
+              longitude: 80.270956
+
       responses:
+
         '200':
-          description: Successfully encoded DIGIPIN
+          description: DIGIPIN generated successfully
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  digipin:
-                    type: string
+                $ref: '#/components/schemas/EncodeResponse'
+              example:
+                digipin: "4T396F42L7"
+
         '400':
-          description: Invalid input
-    get:
-      summary: Encode latitude and longitude into DIGIPIN
-      parameters:
-        - in: query
-          name: latitude
-          required: true
-          schema:
-            type: number
-        - in: query
-          name: longitude
-          required: true
-          schema:
-            type: number
-      responses:
-        '200':
-          description: Successfully encoded DIGIPIN
+          description: Invalid latitude or longitude
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  digipin:
-                    type: string
-        '400':
-          description: Invalid input
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+
+                latitudeOutOfRange:
+                  value:
+                    error: "Latitude out of range"
+
+                longitudeOutOfRange:
+                  value:
+                    error: "Longitude out of range"
 
   /digipin/decode:
+
+    get:
+      tags:
+        - DIGIPIN
+
+      summary: Decode DIGIPIN into geographic coordinates
+
+      description: |
+        Decodes a valid DIGIPIN into its corresponding geographic coordinates.
+
+        Example DIGIPIN:
+
+        4T396F42L7
+
+      parameters:
+        - name: digipin
+          in: query
+          required: true
+          description: Continuous 10-character DIGIPIN.
+          schema:
+            type: string
+            minLength: 10
+            maxLength: 10
+            pattern: "^[23456789CJKLMPFT]{10}$"
+            example: "4T396F42L7"
+
+      responses:
+
+        '200':
+          description: DIGIPIN decoded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecodeResponse'
+              example:
+                latitude: "13.067526"
+                longitude: "80.270956"
+
+        '400':
+          description: Invalid DIGIPIN
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+
+                invalidLength:
+                  value:
+                    error: "Invalid DIGIPIN. DIGIPIN must be a continuous 10-character string."
+
+                invalidCharacterSet:
+                  value:
+                    error: "Invalid DIGIPIN. DIGIPIN must be a continuous 10-character string containing only approved DIGIPIN characters (2,3,4,5,6,7,8,9,C,J,K,L,M,P,F,T)."
+
+                invalidDecode:
+                  value:
+                    error: "Invalid DIGIPIN. Unable to decode the supplied DIGIPIN."
+
     post:
-      summary: Decode DIGIPIN to coordinates
+      tags:
+        - DIGIPIN
+
+      summary: Decode DIGIPIN into geographic coordinates
+
+      description: |
+        Decodes a valid DIGIPIN into its corresponding geographic coordinates.
+
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                digipin:
-                  type: string
+              $ref: '#/components/schemas/DecodeRequest'
+            example:
+              digipin: "4T396F42L7"
+
       responses:
+
         '200':
-          description: Successfully decoded DIGIPIN
+          description: DIGIPIN decoded successfully
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                  longitude:
-                    type: number
+                $ref: '#/components/schemas/DecodeResponse'
+              example:
+                latitude: "13.067526"
+                longitude: "80.270956"
+
         '400':
           description: Invalid DIGIPIN
-    get:
-      summary: Decode DIGIPIN to coordinates
-      parameters:
-        - in: query
-          name: digipin
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successfully decoded DIGIPIN
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                  longitude:
-                    type: number
-        '400':
-          description: Invalid DIGIPIN
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+
+                invalidLength:
+                  value:
+                    error: "Invalid DIGIPIN. DIGIPIN must be a continuous 10-character string."
+
+                invalidCharacterSet:
+                  value:
+                    error: "Invalid DIGIPIN. DIGIPIN must be a continuous 10-character string containing only approved DIGIPIN characters (2,3,4,5,6,7,8,9,C,J,K,L,M,P,F,T)."
+
+                invalidDecode:
+                  value:
+                    error: "Invalid DIGIPIN. Unable to decode the supplied DIGIPIN."
+
+components:
+
+  schemas:
+
+    EncodeRequest:
+      type: object
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 13.067526
+        longitude:
+          type: number
+          format: double
+          example: 80.270956
+
+    EncodeResponse:
+      type: object
+      properties:
+        digipin:
+          type: string
+          example: "4T396F42L7"
+
+    DecodeRequest:
+      type: object
+      required:
+        - digipin
+      properties:
+        digipin:
+          type: string
+          minLength: 10
+          maxLength: 10
+          pattern: "^[23456789CJKLMPFT]{10}$"
+          example: "4T396F42L7"
+
+    DecodeResponse:
+      type: object
+      properties:
+        latitude:
+          type: string
+          example: "13.067526"
+        longitude:
+          type: string
+          example: "80.270956"

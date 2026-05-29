@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Disclaimer - DIGIPIN API & Reference Implementation Repository</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:30px;
+    background:#f4f5f7;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#333;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.policy-card{
+    background:#ffffff;
+    border:2px solid #d32f2f;
+    border-radius:12px;
+    padding:35px 50px;
+    box-sizing:border-box;
+    box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.header-left{
+    width:180px;
+}
+
+.header-left img{
+    width:120px;
+    height:auto;
+}
+
+.header-center{
+    flex:1;
+}
+
+.digipin-brand{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    gap:10px;
+}
+
+.digipin-logo{
+    height:72px;
+    width:auto;
+    display:block;
+    margin-top:4px;
+}
+
+.digipin-text{
+    margin:0;
+    padding:0;
+    font-size:70px;
+    font-weight:800;
+    line-height:70px;
+    letter-spacing:1px;
+    color:#1f2937;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.header-right{
+    width:220px;
+    text-align:right;
+}
+
+.header-right img{
+    width:180px;
+    height:auto;
+}
+
+.header-divider{
+    margin-top:18px;
+    height:4px;
+    background:linear-gradient(
+        to right,
+        #f58220 50%,
+        #138808 50%
+    );
+}
+
+.page-title{
+    text-align:left;
+    margin-top:32px;
+}
+
+.page-title h1{
+    margin:0;
+    font-size:38px;
+    color:#111827;
+}
+
+.page-title h2{
+    margin-top:10px;
+    font-size:20px;
+    font-weight:500;
+    color:#555;
+}
+
+.meta{
+    text-align:left;
+    margin-top:15px;
+    color:#666;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.section{
+    margin-top:40px;
+}
+
+.section h2{
+    font-size:28px;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.section h2::after{
+    content:"";
+    display:block;
+    width:100%;
+    height:2px;
+    background:#333;
+    margin-top:8px;
+}
+
+.section h3{
+    font-size:22px;
+    color:#1f2937;
+    margin-top:25px;
+}
+
+p{
+    font-size:16px;
+    line-height:1.8;
+    text-align:justify;
+}
+
+ul{
+    padding-left:24px;
+}
+
+li{
+    line-height:1.8;
+    margin-bottom:6px;
+}
+
+.contact-box{
+    border-left:4px solid #dddddd;
+    padding-left:18px;
+    margin-top:15px;
+}
+
+.footer{
+    margin-top:50px;
+    text-align:center;
+    color:#666;
+    font-style:italic;
+}
+
+@media(max-width:768px){
+
+.policy-card{
+    padding:25px;
+}
+
+.header{
+    flex-direction:column;
+}
+
+.header-left,
+.header-right{
+    width:auto;
+    text-align:center;
+}
+
+.digipin-brand{
+    flex-direction:column;
+}
+
+.digipin-logo{
+    width:60px;
+    height:60px;
+}
+
+.digipin-text{
+    font-size:48px;
+}
+
+.page-title h1{
+    font-size:30px;
+}
+
+.page-title h2{
+    font-size:18px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="policy-card">
+
+<div class="header">
+
+<div class="header-left">
+<img src="/docs/images/indiapost_logo_v2.webp" alt="India Post">
+</div>
+
+<div class="header-center">
+
+<div class="digipin-brand">
+
+<img src="/docs/images/DIGIPIN_Logo.png"
+     alt="DIGIPIN"
+     class="digipin-logo">
+
+<span class="digipin-text">
+DIGIPIN
+</span>
+
+</div>
+
+</div>
+
+<div class="header-right">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ministry_of_Communications_India.svg/1920px-Ministry_of_Communications_India.svg.png"
+     alt="Ministry of Communications"
+     width="210"/>
+</div>
+
+</div>
+
+<div class="header-divider"></div>
+
+<div class="page-title">
+
+<h1>Disclaimer</h1>
+
+<h2>
+DIGIPIN API & Reference Implementation Repository
+</h2>
+
+</div>
+
+<div class="meta">
+Department of Posts, Government of India<br>
+Version 1.0 | Last Updated: 19 May 2025
+</div>
+
+<div class="section">
+
+<p>
+By accessing and using this repository, website, API, or associated services, you acknowledge and agree to the following terms:
+</p>
+
+<ol class="disclaimer-list">
+
+<li>
+The DIGIPIN API, reference implementations, documentation, source code, and associated services are provided by the Department of Posts, Government of India for general informational, technical, and development purposes only. While reasonable efforts are made to ensure accuracy and reliability, no warranty or guarantee is made regarding the completeness, correctness, availability, suitability, or fitness for any particular purpose.
+</li>
+
+<li>
+The availability of a DIGIPIN for a location does not guarantee the availability of Department of Posts services at that location. Users are advised to independently verify the availability of postal or related services through the appropriate authorities before relying on such information.
+</li>
+
+<li>
+Location accuracy may vary due to factors such as GNSS (Global Navigation Satellite System) signal quality, atmospheric conditions, device hardware limitations, network conditions, physical obstructions, and third-party mapping data accuracy. Generated DIGIPIN values may differ from actual ground-truth locations under certain circumstances.
+</li>
+
+<li>
+The Department of Posts shall not be liable for any direct, indirect, incidental, consequential, special, exemplary, or punitive damages arising from the use of, inability to use, or reliance upon DIGIPIN data, APIs, source code, documentation, reference implementations, or associated services.
+</li>
+
+<li>
+Base map data used in DIGIPIN-enabled services may be sourced from providers including MapmyIndia, ESRI, and Bhuvan. Maps, geographic visualizations, and location representations are provided solely for general illustration and reference purposes and are not intended for legal, cadastral, surveying, land ownership, or jurisdictional use. The depiction of boundaries and geographic information does not necessarily imply official endorsement or reflect the position of the Government of India regarding international recognition, sovereignty, or jurisdiction.
+</li>
+
+<li>
+The DIGIPIN API and reference implementation repository are provided for educational, research, development, testing, and integration purposes. Users are responsible for independently validating the correctness, security, suitability, and performance of any implementation before deployment in production environments.
+</li>
+
+<li>
+This repository, its contents, and associated services shall be governed by and construed in accordance with the laws of India. Any dispute arising from the use of DIGIPIN services shall be subject to the exclusive jurisdiction of competent courts in India.
+</li>
+
+<li>
+The Department of Posts reserves the right to modify, update, replace, suspend, or discontinue any part of the repository, documentation, APIs, services, or related resources at any time without prior notice.
+</li>
+
+<li>
+Material contained within this repository may be reproduced only after obtaining appropriate authorization from the Department of Posts. Any reproduced material must accurately reflect the original content, must not be misleading or derogatory, and must clearly acknowledge the Department of Posts as the source. Permission does not extend to third-party copyrighted material. Separate authorization must be obtained from the respective copyright holders where applicable.
+</li>
+
+</ol>
+
+</div>
+
+<div class="section">
+
+</div>
+
+<div class="footer">
+This Disclaimer is issued by the Department of Posts, Government of India.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
