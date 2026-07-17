@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Privacy Policy - DIGIPIN API & Reference Implementation Repository</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:30px;
+    background:#f4f5f7;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#333;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.policy-card{
+    background:#ffffff;
+    border:2px solid #d32f2f;
+    border-radius:12px;
+    padding:35px 50px;
+    box-sizing:border-box;
+    box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.header-left{
+    width:180px;
+}
+
+.header-left img{
+    width:120px;
+    height:auto;
+}
+
+.header-center{
+    flex:1;
+}
+
+.digipin-brand{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    gap:10px;
+}
+
+.digipin-logo{
+    height:72px;
+    width:auto;
+    display:block;
+    margin-top:4px;
+}
+
+.digipin-text{
+    margin:0;
+    padding:0;
+    font-size:70px;
+    font-weight:800;
+    line-height:70px;
+    letter-spacing:1px;
+    color:#1f2937;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.header-right{
+    width:220px;
+    text-align:right;
+}
+
+.header-right img{
+    width:180px;
+    height:auto;
+}
+
+.header-divider{
+    margin-top:18px;
+    height:4px;
+    background:linear-gradient(
+        to right,
+        #f58220 50%,
+        #f5f4f4 50%,
+        #138808 50%
+    );
+
+.page-title{
+    text-align:left;
+    margin-top:32px;
+}
+
+.page-title h1{
+    margin:0;
+    font-size:38px;
+    color:#111827;
+}
+
+.page-title h2{
+    margin-top:10px;
+    font-size:20px;
+    font-weight:500;
+    color:#555;
+}
+
+.meta{
+    text-align:left;
+    margin-top:15px;
+    color:#666;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.section{
+    margin-top:40px;
+}
+
+.section h2{
+    font-size:28px;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.section h2::after{
+    content:"";
+    display:block;
+    width:100%;
+    height:2px;
+    background:#adadabe1;
+    margin-top:8px;
+}
+
+.section h3{
+    font-size:22px;
+    color:#1f2937;
+    margin-top:25px;
+}
+
+p{
+    font-size:16px;
+    line-height:1.8;
+    text-align:justify;
+}
+
+ul{
+    padding-left:24px;
+}
+
+li{
+    line-height:1.8;
+    margin-bottom:6px;
+}
+
+.contact-box{
+    border-left:4px solid #dddddd;
+    padding-left:18px;
+    margin-top:15px;
+}
+
+.footer{
+    margin-top:50px;
+    text-align:center;
+    color:#666;
+    font-style:italic;
+}
+
+@media(max-width:768px){
+
+.policy-card{
+    padding:25px;
+}
+
+.header{
+    flex-direction:column;
+}
+
+.header-left,
+.header-right{
+    width:auto;
+    text-align:center;
+}
+
+.digipin-brand{
+    flex-direction:column;
+}
+
+.digipin-logo{
+    width:60px;
+    height:60px;
+}
+
+.digipin-text{
+    font-size:48px;
+}
+
+.page-title h1{
+    font-size:30px;
+}
+
+.page-title h2{
+    font-size:18px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="policy-card">
+
+<div class="header">
+
+<div class="header-left">
+<img src="/docs/images/indiapost_logo_v2.webp" alt="India Post">
+</div>
+
+<div class="header-center">
+
+<div class="digipin-brand">
+
+<img src="/docs/images/DIGIPIN_Logo.png"
+     alt="DIGIPIN"
+     class="digipin-logo">
+
+<span class="digipin-text">
+DIGIPIN
+</span>
+
+</div>
+
+</div>
+
+<div class="header-right">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ministry_of_Communications_India.svg/1920px-Ministry_of_Communications_India.svg.png"
+     alt="Ministry of Communications"
+     width="210"/>
+</div>
+
+</div>
+
+<div class="header-divider"></div>
+
+<div class="page-title">
+
+<h1>Privacy Policy</h1>
+
+<h2>
+DIGIPIN API & Reference Implementation Repository
+</h2>
+
+</div>
+
+<div class="meta">
+Department of Posts, Government of India<br>
+Version 1.0 | Last Updated: 19 May 2025
+</div>
+
+<div class="section">
+
+<h2>1. Introduction</h2>
+
+<p>
+This Privacy Policy describes how the Department of Posts, Government of India ("we", "us", or "our") collects, uses, and processes information through the DIGIPIN API and Reference Implementation Repository.
+</p>
+
+<p>
+We are committed to protecting user privacy and ensuring transparency about our data handling practices.
+</p>
+
+<p>
+DIGIPIN is designed to provide Digital Postal Index Number generation and decoding capabilities based on geographic coordinates.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>2. Information We Collect</h2>
+
+<h3>2.1 Location Data</h3>
+
+<p>
+When using DIGIPIN-enabled applications or services, geographical location information (latitude and longitude) may be processed to generate or decode DIGIPIN values.
+</p>
+
+<ul>
+<li>Location data is not stored for future use.</li>
+<li>No personal identifiers are linked to location data.</li>
+</ul>
+
+<h3>2.2 Technical Information</h3>
+
+<p>
+We may collect technical information including device type, browser information, and IP address to ensure proper functioning, security, and performance of services.
+</p>
+
+<h3>2.3 Cookies</h3>
+
+<p>
+Cookies may be used solely for security and human verification purposes. These cookies do not track user behaviour beyond what is necessary to protect the service.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>3. How We Use Your Information</h2>
+
+<ul>
+<li>Provide accurate DIGIPIN generation and decoding services.</li>
+<li>Improve system functionality and performance.</li>
+<li>Maintain security and service integrity.</li>
+<li>Monitor and analyze service usage.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>4. Information Sharing</h2>
+
+<p>
+We do not sell, rent, or trade user information with third parties.
+</p>
+
+<p>
+Information may be disclosed where required by law, regulatory obligations, court orders, or to authorized government personnel performing official duties.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>5. Data Security</h2>
+
+<ul>
+<li>Encryption of data in transit.</li>
+<li>Secure access controls.</li>
+<li>Periodic security reviews and assessments.</li>
+<li>Protection against unauthorized access, alteration, disclosure, or destruction.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>6. Your Choices</h2>
+
+<p>
+Users may deny location access through browser, device, or application settings. Doing so may limit the ability of DIGIPIN services to generate accurate location-based results.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>7. Changes to This Policy</h2>
+
+<p>
+This Privacy Policy may be updated periodically for operational, legal, security, or regulatory reasons.
+</p>
+
+<p>
+Updated versions will be published with a revised effective date.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>8. Contact Information</h2>
+
+<div class="contact-box">
+
+<strong>Department of Posts, Government of India</strong><br><br>
+
+Dak Bhawan, Sansad Marg<br>
+New Delhi – 110001<br><br>
+
+Phone: 1800 266 6868<br>
+Website: www.indiapost.gov.in
+
+</div>
+
+</div>
+
+<div class="footer">
+This Privacy Policy is issued by the Department of Posts, Government of India.
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

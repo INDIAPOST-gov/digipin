@@ -1,0 +1,10 @@
+<svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circle -->
+  <circle cx="60" cy="40" r="30" stroke="#555" stroke-width="10" fill="none"></circle>
+
+  <!-- Vertical line -->
+  <line x1="60" y1="70" x2="60" y2="120" stroke="#555" stroke-width="10"></line>
+
+  <!-- Base line -->
+  <line x1="30" y1="120" x2="90" y2="120" stroke="#555" stroke-width="10"></line>
+</svg>
