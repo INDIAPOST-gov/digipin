@@ -65,10 +65,7 @@ function getDigiPin(lat, lon) {
   if (lon < BOUNDS.minLon || lon > BOUNDS.maxLon)
     throw new Error("Longitude out of range");
 
-  let minLat = BOUNDS.minLat;
-  let maxLat = BOUNDS.maxLat;
-  let minLon = BOUNDS.minLon;
-  let maxLon = BOUNDS.maxLon;
+  let { minLat, maxLat, minLon, maxLon } = BOUNDS;
 
   let digiPin = "";
 
@@ -137,10 +134,7 @@ function getLatLngFromDigiPin(digiPin) {
       "Invalid DIGIPIN. Only approved DIGIPIN characters (2,3,4,5,6,7,8,9,C,J,K,L,M,P,F,T) are permitted. Spaces, hyphens, and special characters are not allowed."
     );
   }
-  let minLat = BOUNDS.minLat;
-  let maxLat = BOUNDS.maxLat;
-  let minLon = BOUNDS.minLon;
-  let maxLon = BOUNDS.maxLon;
+  let { minLat, maxLat, minLon, maxLon } = BOUNDS;
 
   for (let i = 0; i < 10; i++) {
     const char = pin[i];
