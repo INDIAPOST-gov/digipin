@@ -50,7 +50,7 @@ paths:
           schema:
             type: number
             format: double
-            example: 13.067526
+            example: 13.11179621
 
         - name: longitude
           in: query
@@ -59,7 +59,7 @@ paths:
           schema:
             type: number
             format: double
-            example: 80.270956
+            example: 80.20264269
 
       responses:
 
@@ -87,6 +87,10 @@ paths:
                 longitudeOutOfRange:
                   value:
                     error: "Longitude out of range"
+
+                invalidNumbers:
+                  value:
+                    error: "Latitude and longitude must be valid numbers"
 
     post:
       tags:
@@ -105,8 +109,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EncodeRequest'
             example:
-              latitude: 13.067526
-              longitude: 80.270956
+              latitude: 13.11179621
+              longitude: 80.20264269
 
       responses:
 
@@ -134,6 +138,10 @@ paths:
                 longitudeOutOfRange:
                   value:
                     error: "Longitude out of range"
+
+                invalidNumbers:
+                  value:
+                    error: "Latitude and longitude must be valid numbers"
 
   /digipin/decode:
 
@@ -171,8 +179,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/DecodeResponse'
               example:
-                latitude: "13.067526"
-                longitude: "80.270956"
+                latitude: "13.111780"
+                longitude: "80.202635"
 
         '400':
           description: Invalid DIGIPIN
@@ -221,8 +229,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/DecodeResponse'
               example:
-                latitude: "13.067526"
-                longitude: "80.270956"
+                latitude: "13.111780"
+                longitude: "80.202635"
 
         '400':
           description: Invalid DIGIPIN
@@ -257,11 +265,11 @@ components:
         latitude:
           type: number
           format: double
-          example: 13.067526
+          example: 13.11179621
         longitude:
           type: number
           format: double
-          example: 80.270956
+          example: 80.20264269
 
     EncodeResponse:
       type: object
@@ -287,7 +295,14 @@ components:
       properties:
         latitude:
           type: string
-          example: "13.067526"
+          example: "13.111780"
         longitude:
           type: string
-          example: "80.270956"
+          example: "80.202635"
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Latitude out of range"

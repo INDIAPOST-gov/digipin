@@ -16,7 +16,7 @@
 <td align="center" width="50%">
 
 <p align="center">
-<img src="docs//images/DIGIPIN_Logo.png"
+<img src="docs/images/DIGIPIN_Logo.png"
      alt="DIGIPIN logo"
      width="52"
      style="vertical-align: middle; margin-right: 12px;"/>
@@ -257,7 +257,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-Please ensure your code adheres to the existing style and passes all tests.
+Please ensure your code adheres to the existing style and passes all tests (`npm test`).
 
 ---
 
@@ -277,8 +277,8 @@ This project is licensed under the Apache License, Version 2.0 - see the [LICENS
 
 ## ⚖️ Legal
 
-- [Privacy Policy](PRIVACY_POLICY.md)
-- [Disclaimer](DISCLAIMER.md)
+- [Privacy Policy](docs/privacy-policy.md)
+- [Disclaimer](docs/disclaimer.md)
 
 ---
 
@@ -287,4 +287,4 @@ This project is licensed under the Apache License, Version 2.0 - see the [LICENS
 
 ## 📝 Release Information
 
-See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
+See [CHANGELOG.md](docs/changelog.md) for version history and release notes.

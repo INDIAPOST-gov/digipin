@@ -48,6 +48,11 @@ const BOUNDS = {
   maxLon: 99.5,
 };
 
+function toFiniteNumber(value) {
+  if (typeof value === 'string' && value.trim() === '') return NaN;
+  return Number(value);
+}
+
 /**
  * Function Name: getDigiPin
  * Arguments    : Latitude, Longitude (e.g., 13.11179621, 80.20264269)
@@ -59,7 +64,11 @@ const BOUNDS = {
  * Modifications : The DIGIPIN format would remain as 10-character continuous string w/o any punctuations.
  */
 function getDigiPin(lat, lon) {
+  lat = toFiniteNumber(lat);
+  lon = toFiniteNumber(lon);
 
+  if (!Number.isFinite(lat) || !Number.isFinite(lon))
+    throw new Error("Latitude and longitude must be valid numbers");
   if (lat < BOUNDS.minLat || lat > BOUNDS.maxLat)
     throw new Error("Latitude out of range");
   if (lon < BOUNDS.minLon || lon > BOUNDS.maxLon)
@@ -85,8 +94,6 @@ function getDigiPin(lat, lon) {
 
     digiPin += DIGIPIN_GRID[row][col];
 
-    if (level === 3 || level === 6) digiPin += "";
-
     // Update bounds (reverse logic for row)
     maxLat = minLat + latDiv * (4 - row);
     minLat = minLat + latDiv * (3 - row);
@@ -95,7 +102,6 @@ function getDigiPin(lat, lon) {
     maxLon = minLon + lonDiv;
   }
 
-  const str = String(digiPin).toUpperCase();
   return digiPin;
 }
 
